@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Booking</title>
+    <style>
+        body {
+            background-image: url('https://www.nextiva.com/blog/wp-content/uploads/sites/2/virtual-call-center-software-feature-image.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        h1 {
+            text-align: center;
+            color:red;
+            background-image: url('https://www.svgrepo.com/show/6064/phone-call.svg');
+            background-repeat: no-repeat;
+            background-size: 5% 100%;
+            background-position:center;
+            font-size:90px;
+        }
+        label {
+            font-family:'verdana';
+            font-size:30px;
+            color:blueviolet;
+        }
+        input {
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book a Call</h1>
+    <p style="text-align:center;font-size:23px;">Book a call slot and our representative will call you within 1hr of selected time</p>
+    <br>
+    <br>
+    <br>
+    <form id="form1" onsubmit="logdata(event)">
+        <fieldset style="background-color:whitesmoke;width:800px;margin:0px auto;text-align:center;">
+            <label for="username">Name: </label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required><br><br>
+            <label for="dtime">Time for call:</label>
+            <input type="datetime-local" id="dtime" name="dtime" required><br><br>
+            <input type="submit" value="Get a Call">
+        </fieldset>
+    </form>
+    <script src="index.js"></script>
+</body>
+</html>
