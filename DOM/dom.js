@@ -49,7 +49,7 @@ for (let i = 0; i < items.length; i++){
 // }
 
 // GETELEMENTSBYTAGNAME //
-// let li =  document.getElementsByTagName('li');
+let li =  document.getElementsByTagName('li');
 // console.log(li);
 // console.log(li[1]);
 // li[1].textContent = 'Hello 2';
@@ -58,8 +58,8 @@ for (let i = 0; i < items.length; i++){
 
 // items.style.backgroundColor = "#f4f4f4"; // gives error //
 
-// for (let i = 0; i < li.length; i++){
-//     li[i].style.backgroundColor = "#f4f4f4";
-// }
+for (let i = 0; i < li.length; i++){
+    li[i].style.backgroundColor = "#f4f4f4";
+}
 
 // 
