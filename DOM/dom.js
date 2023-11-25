@@ -21,7 +21,7 @@ let headerTitle = document.getElementById('header-title');
 // console.log(headerTitle);
 // headerTitle.textContent = 'Hello'; // will show text irrespective of style //
 // headerTitle.innerText = 'GoodBye'; // will take style into consideration //
-// console.log(headerTitle.innerText) // ---^ //
+// console.log(headerTitle.textContent) // ---^ //
 // headerTitle.innerHTML = '<h3>Hello</h3>';
 headerTitle.style.borderBottom = 'solid 3px #000';
 
@@ -30,12 +30,17 @@ addItems.style.fontWeight = 'bold';
 addItems.style.color = 'green';
 
 // GETELEMENTSBYCLASSNAME //
-// let items =  document.getElementsByClassName('list-group-item');
+let items =  document.getElementsByClassName('list-group-item');
 // console.log(items);
 // console.log(items[1]);
 // items[1].textContent = 'Hello 2';
 // items[1].style.fontWeight = 'bold';
-// items[1].style.backgroundColor = 'yellow';
+items[2].style.backgroundColor = 'green';
+
+for (let i = 0; i < items.length; i++){
+    items[i].style.fontWeight = "bold";
+}
+
 
 // items.style.backgroundColor = "#f4f4f4"; // gives error //
 
