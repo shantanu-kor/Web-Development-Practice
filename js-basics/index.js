@@ -33,6 +33,12 @@ function logdata(event){
     btn.className = 'delete';
 
     newli.appendChild(btn)
+    
+    btn = document.createElement('button');
+    btn.textContent = "EDIT";
+    btn.className = 'edit';
+
+    newli.appendChild(btn)
 
     document.getElementById('list').appendChild(newli);
 }
@@ -44,6 +50,21 @@ document.getElementById('list').addEventListener('click', (e) => {
             document.getElementById('list').removeChild(li);
             email = li.innerText.split(' - ')[1];
             localStorage.removeItem(email);
+        }
+    }
+})
+
+document.getElementById('list').addEventListener('click', (e) => {
+    if (e.target.classList.contains('edit')){
+        if(confirm('Are You Sure?')){
+            let li = e.target.parentElement;
+            document.getElementById('list').removeChild(li);
+            data = li.innerText.split(' - ');
+            document.getElementById('username').value = data[0];
+            document.getElementById('email').value = data[1];
+            document.getElementById('phone').value = data[2];
+            document.getElementById('dtime').value = data[3];
+            localStorage.removeItem(data[1]);
         }
     }
 })
