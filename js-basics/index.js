@@ -24,9 +24,26 @@ function logdata(event){
     localStorage.setItem(email, JSON.stringify(obj));
 
     newli = document.createElement('li');
-    text = document.createTextNode(name+" "+email+" "+phone+" "+dtime);
+    text = document.createTextNode(name+" - "+email+" - "+phone+" - "+dtime);
 
     newli.appendChild(text);
 
+    btn = document.createElement('button');
+    btn.textContent = "DELETE";
+    btn.className = 'delete';
+
+    newli.appendChild(btn)
+
     document.getElementById('list').appendChild(newli);
 }
+
+document.getElementById('list').addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete')){
+        if(confirm('Are You Sure?')){
+            let li = e.target.parentElement;
+            document.getElementById('list').removeChild(li);
+            email = li.innerText.split(' - ')[1];
+            localStorage.removeItem(email);
+        }
+    }
+})
