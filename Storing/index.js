@@ -17,8 +17,12 @@ const clicked = (e) => {
     email = document.getElementById('email').value;
     console.log(name);
     console.log(email);
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
+    obj = {
+        name: name,
+        email: email
+    }
+    obj = JSON.stringify(obj)
+    localStorage.setItem('details', obj);
 
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
