@@ -18,12 +18,14 @@ function addItem(e){
     // Get input value
     let newItem = document.getElementById('item').value;
 
+    let newItem1 = document.getElementById('description').value;
+
     // Create new li element
     let li = document.createElement('li');
     // Add class
     li.className = "list-group-item";
     // Add text node with input value
-    li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(newItem+" "+newItem1));
 
     // Create del button element
     let deleteBtn = document.createElement('button');
