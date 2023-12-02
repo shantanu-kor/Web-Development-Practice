@@ -21,10 +21,41 @@ function logdata(event){
         dtime: dtime
     }
 
-    localStorage.setItem(email, JSON.stringify(obj));
+    // localStorage.setItem(email, JSON.stringify(obj));
+
+    axios.post("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData", obj)
+        .then(res => {
+            addUserDetails(res.data)
+            // console.log(res)
+        })
+        .catch(err => {
+            document.body.innerText = "<h4>Something went wrong</h4>"
+            console.log(err)
+        })
+    
+        document.getElementById('username').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('dtime').value = '';
+    
+
+    
+}
+function printDataAtStart(){
+    axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+        .then(res => {
+            for (let i of res.data){
+                addUserDetails(i);
+            }
+        })
+}
+printDataAtStart()
+
+function addUserDetails(obj){
 
     newli = document.createElement('li');
-    text = document.createTextNode(name+" - "+email+" - "+phone+" - "+dtime);
+    newli.className = "list-group-item";
+    text = document.createTextNode(obj.name+" - "+obj.email+" - "+obj.phone+" - "+obj.dtime);
 
     newli.appendChild(text);
 
@@ -47,9 +78,20 @@ document.getElementById('list').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')){
         if(confirm('Are You Sure?')){
             let li = e.target.parentElement;
-            document.getElementById('list').removeChild(li);
             email = li.innerText.split(' - ')[1];
-            localStorage.removeItem(email);
+            document.getElementById('list').removeChild(li);
+            // localStorage.removeItem(email);
+            axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+                .then(res => {
+                    for (i of res.data){
+                        if (i.email == email){
+                            axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
 })
@@ -64,7 +106,19 @@ document.getElementById('list').addEventListener('click', (e) => {
             document.getElementById('email').value = data[1];
             document.getElementById('phone').value = data[2];
             document.getElementById('dtime').value = data[3];
-            localStorage.removeItem(data[1]);
+            // localStorage.removeItem(data[1]);
+            email = data[1];
+            axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+                .then(res => {
+                    for (i of res.data){
+                        if (i.email == email){
+                            axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
 })
