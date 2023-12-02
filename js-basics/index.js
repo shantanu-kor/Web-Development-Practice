@@ -49,7 +49,7 @@ function printDataAtStart(){
             }
         })
 }
-printDataAtStart()
+window.addEventListener("DOMContentLoaded", () => printDataAtStart())
 
 function addUserDetails(obj){
 
@@ -78,13 +78,16 @@ document.getElementById('list').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')){
         if(confirm('Are You Sure?')){
             let li = e.target.parentElement;
-            email = li.innerText.split(' - ')[1];
+            data = li.innerText.split(' - ');
             document.getElementById('list').removeChild(li);
             // localStorage.removeItem(email);
+            name = data[0]
+            email = data[1];
+            phone = data[2];
             axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
                 .then(res => {
                     for (i of res.data){
-                        if (i.email == email){
+                        if (i.email == email && i.name == name && i.phone == phone){
                             axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
                         }
                     }
@@ -107,11 +110,13 @@ document.getElementById('list').addEventListener('click', (e) => {
             document.getElementById('phone').value = data[2];
             document.getElementById('dtime').value = data[3];
             // localStorage.removeItem(data[1]);
+            name = data[0]
             email = data[1];
+            phone = data[2];
             axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
                 .then(res => {
                     for (i of res.data){
-                        if (i.email == email){
+                        if (i.email == email && i.name == name && i.phone == phone){
                             axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
                         }
                     }
