@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form onsubmit="submitted(event)">
+        <label for="todoName">Todo Name</label>
+        <input type="text" id="todoName">
+        <label for="description">Description</label>
+        <input type="text" id="description">
+        <input type="submit" value="Add Item">
+    </form>
+    <ul id="list">Todos Remaining</ul><br><br>
+    <ul id="list1">Todos Done</ul>
+    <script src="index.js"></script>
+</body>
+</html>
