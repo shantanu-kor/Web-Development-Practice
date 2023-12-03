@@ -1,3 +1,6 @@
+let id = "eb4aded78f6047a9bb15a9b9dd41f0b2";
+
+
 function logdata(event){
     event.preventDefault();
     // var name = event.target.username.value;
@@ -23,7 +26,7 @@ function logdata(event){
 
     // localStorage.setItem(email, JSON.stringify(obj));
 
-    axios.post("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData", obj)
+    axios.post(`https://crudcrud.com/api/${id}/appointmentData`, obj)
         .then(res => {
             addUserDetails(res.data)
             // console.log(res)
@@ -42,7 +45,7 @@ function logdata(event){
     
 }
 function printDataAtStart(){
-    axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+    axios.get(`https://crudcrud.com/api/${id}/appointmentData`)
         .then(res => {
             for (let i of res.data){
                 addUserDetails(i);
@@ -84,11 +87,11 @@ document.getElementById('list').addEventListener('click', (e) => {
             name = data[0]
             email = data[1];
             phone = data[2];
-            axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+            axios.get(`https://crudcrud.com/api/${id}/appointmentData`)
                 .then(res => {
                     for (i of res.data){
                         if (i.email == email && i.name == name && i.phone == phone){
-                            axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
+                            axios.delete(`https://crudcrud.com/api/${id}/appointmentData/`+i._id)
                         }
                     }
                 })
@@ -113,11 +116,11 @@ document.getElementById('list').addEventListener('click', (e) => {
             name = data[0]
             email = data[1];
             phone = data[2];
-            axios.get("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData")
+            axios.get(`https://crudcrud.com/api/${id}/appointmentData`)
                 .then(res => {
                     for (i of res.data){
                         if (i.email == email && i.name == name && i.phone == phone){
-                            axios.delete("https://crudcrud.com/api/69c9c86753234af587f7efca7f645b1d/appointmentData/"+i._id)
+                            axios.delete(`https://crudcrud.com/api/${id}/appointmentData/`+i._id)
                         }
                     }
                 })
