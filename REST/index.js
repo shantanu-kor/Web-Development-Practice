@@ -1,3 +1,5 @@
+let id = "e97cc58883084f168dfd3b7da3aef787";
+
 let lis = document.getElementById("list");
 let lis1 = document.getElementById("list1");
 let todoName = document.getElementById("todoName");
@@ -11,7 +13,7 @@ function submitted(e){
         description: description.value,
         done: false
     }
-    axios.post("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos", obj)
+    axios.post(`https://crudcrud.com/api/${id}/Todos`, obj)
         .then(res => {createTodoRemaining(res.data)})
         .catch(err => console.log(err));
     todoName.value = '';
@@ -38,7 +40,7 @@ function createTodoRemaining(obj){
 window.addEventListener("DOMContentLoaded", () => loadTodo());
 
 function loadTodo(){
-    axios.get("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos")
+    axios.get(`https://crudcrud.com/api/${id}/Todos`)
         .then(res => {
             for (let i of res.data){
                 if (i.done == false){
@@ -57,11 +59,11 @@ lis.addEventListener('click', (e) => {
         text = document.createTextNode(li.innerText.split("DoneX")[0]);
         createTodoDone(text);
         text = li.innerText.split("DoneX")[0].split(" - ");
-        axios.get("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos")
+        axios.get(`https://crudcrud.com/api/${id}/Todos`)
             .then((res) => {
                 for (let i of res.data){
                     if (i.todo == text[0] && i.description == text[1]){
-                        axios.put("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos/"+i._id, {
+                        axios.put(`https://crudcrud.com/api/${id}/Todos/`+i._id, {
                             todo: i.todo,
                             description: i.description,
                             done: true
@@ -85,11 +87,11 @@ lis.addEventListener('click', (e) => {
     if (e.target.classList.contains("delete")){
         li = e.target.parentElement;
         text = li.innerText.split("DoneX")[0].split(" - ");
-        axios.get("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos")
+        axios.get(`https://crudcrud.com/api/${id}/Todos`)
             .then(res => {
                 for (let i of res.data){
                     if (i.todo == text[0] && i.description == text[1]){
-                        axios.delete("https://crudcrud.com/api/b1c4fba1937143fbbc3274980afc6f43/Todos/"+i._id);
+                        axios.delete(`https://crudcrud.com/api/${id}/Todos/`+i._id);
                         break;
                     }
                 }
