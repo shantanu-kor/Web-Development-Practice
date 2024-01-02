@@ -16,6 +16,9 @@ const ExpenseInput = () => {
         description: descriptionRef.current.value,
         category: categoryRef.current.value,
     });
+    amountRef.current.value = '';
+    descriptionRef.current.value = '';
+    categoryRef.current.value = "Food";
   };
 
   return (
